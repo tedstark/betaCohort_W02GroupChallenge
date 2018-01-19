@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
     private static int boardWidth = 5;
     private static int boardHeight = 5;
-    private static String [][] gameBoard = new String[boardWidth][boardHeight];
+    private static String [][] gameBoard = new String[boardWidth][boardHeight];  //Declare Game Board Array
 
     public static void main(String[] args) {
         /* Group Participation #2 – Week 2
@@ -27,64 +27,71 @@ public class Main {
                     •    Create and utilize 2 dimensional arrays to model tables and grids */
 
         //welcome & decision block
-        System.out.println("Welcome to Battleship Limited! This is a modified, simplified game for one person. " +
-                "Would you like to play? (Yes/No)");
+        System.out.println("Welcome to Battleship Limited! This is a modified, simplified game for one person across a 5x5 game board. ");
+        System.out.println("Would you like to play? (Yes/No)");
         Scanner sc = new Scanner(System.in);
         //String playGame = sc.nextLine();
 
-//        while (playGame.equalsIgnoreCase("Yes")) {
-//            // Code block for board/grid
+        //MAIN WHILE LOOP START
+        //while (playGame.equalsIgnoreCase("Yes")) {
+            System.out.println("Great! Let me get the game board ready....");
 
-        //screen output
-        //board array
-        //code to assign game array with values:
-        gameBoard [0][0]= "A1";
-        gameBoard [1][0]= "A2";
-        gameBoard [2][0]= "A3";
-        gameBoard [3][0]= "A4";
-        gameBoard [4][0]= "A5";
-        gameBoard [0][1]= "B1";
-        gameBoard [1][1]= "B2";
-        gameBoard [2][1]= "B3";
-        gameBoard [3][1]= "B4";
-        gameBoard [4][1]= "B5";
-        gameBoard [0][2]= "C1";
-        gameBoard [1][2]= "C2";
-        gameBoard [2][2]= "C3";
-        gameBoard [3][2]= "C4";
-        gameBoard [4][2]= "C5";
-        gameBoard [0][3]= "D1";
-        gameBoard [1][3]= "D2";
-        gameBoard [2][3]= "D3";
-        gameBoard [3][3]= "D4";
-        gameBoard [4][3]= "D5";
-        gameBoard [0][4]= "E1";
-        gameBoard [1][4]= "E2";
-        gameBoard [2][4]= "E3";
-        gameBoard [3][4]= "E4";
-        gameBoard [4][4]= "E5";
+            //code for randomized ship location selection
+            Random shipSelection = new Random();
+            int shipRandomX = shipSelection.nextInt(boardWidth);
+            int shipRandomY = shipSelection.nextInt(boardHeight);
+            System.out.println("Random Ship Selection is: " + shipRandomX + "," + shipRandomY);
 
-        System.out.println("");
-        System.out.println("Battleship Limited");
-        System.out.println("----------------");
-        printMap();
-        System.out.println("Select the coordinates of where a ship might be:");
-        //String userGuess = sc.nextLine();
+            //Code block to assign gameBoard array with values:
+            gameBoard [0][0]= "A1";
+            gameBoard [1][0]= "A2";
+            gameBoard [2][0]= "A3";
+            gameBoard [3][0]= "A4";
+            gameBoard [4][0]= "A5";
+            gameBoard [0][1]= "B1";
+            gameBoard [1][1]= "B2";
+            gameBoard [2][1]= "B3";
+            gameBoard [3][1]= "B4";
+            gameBoard [4][1]= "B5";
+            gameBoard [0][2]= "C1";
+            gameBoard [1][2]= "C2";
+            gameBoard [2][2]= "C3";
+            gameBoard [3][2]= "C4";
+            gameBoard [4][2]= "C5";
+            gameBoard [0][3]= "D1";
+            gameBoard [1][3]= "D2";
+            gameBoard [2][3]= "D3";
+            gameBoard [3][3]= "D4";
+            gameBoard [4][3]= "D5";
+            gameBoard [0][4]= "E1";
+            gameBoard [1][4]= "E2";
+            gameBoard [2][4]= "E3";
+            gameBoard [3][4]= "E4";
+            gameBoard [4][4]= "E5";
 
-        //code for random location selection
-        Random shipSelection = new Random();
-        int shipRandomX = shipSelection.nextInt(boardWidth);
-        int shipRandomY = shipSelection.nextInt(boardHeight);
-        System.out.println("Random Ship Selection is: " + shipRandomX + "," + shipRandomY);
+            //screen output for player
+            System.out.println(""); //blank line
+            System.out.println("** Battleship Limited **");
+            System.out.println("Here's your game board:");
+            System.out.println("----------------");
+            printGameBoard(); //calls method "printGameBoard" to print game board for user on screen
+            //System.out.println("Select the coordinates of where a ship might be:");
+            //String userGuess = sc.nextLine();
 
-        //System.out.println();
+            //code to Play Again or quit decision
+            //System.out.println("Would you like to play again?");
+            //playGame = sc.nextLine();
+
+        //}
+        // MAIN WHILE LOOP END
+        System.out.println("Okay, have a nice day.");
     }
-    public static void printMap(){
+    public static void printGameBoard(){
         /*Exterior*/for (int y = 0; y < boardHeight; y++) {
             /*Interior*/for (int x = 0; x < boardWidth; x++) {
                 System.out.print(gameBoard[x][y] + " ");
             }
             System.out.println("");
         }
-    }//System.out.println("Okay, have a nice day.");
+    }
 }
