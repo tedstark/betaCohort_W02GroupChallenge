@@ -1,15 +1,14 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     private static int boardWidth = 5;
     private static int boardHeight = 5;
     private static String [][] gameBoard = new String[boardWidth][boardHeight];  //Declare Game Board Array
-    private static List<String> shipArray2 = new ArrayList<>(5);
+    private static List<String> shipArray2 = new ArrayList<>(5); //Collect/store ship locations
+    private static List<String> userGuesses = new ArrayList<>(); //Collect/store player guesses
+    private static List<String> gridIDs = new ArrayList<>();//Store original game grid locations for comparison
 
     public static void main(String[] args) {
         /* Group Participation #2 – Week 2
@@ -34,7 +33,6 @@ public class Main {
         //| 0,2 | 1,2 | 2,2 | 3,2 | 4,2 |
         //| 0,3 | 1,3 | 2,3 | 3,3 | 4,3 |
         //| 0,4 | 1,4 | 2,4 | 3,4 | 4,4 |
-
 
         //welcome & decision block
         System.out.println(""); //Blank Line
@@ -65,10 +63,9 @@ public class Main {
         }
         //code to display ship location array for troubleshooting purposes
         System.out.println("");
-        System.out.println("Here are my locations:  " + shipArray2);
+        System.out.println("Here are the ship locations:  " + shipArray2);
 
-
-        //code to assign game array with values:
+        //code to assign gameboard array with values:
             gameBoard [0][0]= "A1";
             gameBoard [1][0]= "A2";
             gameBoard [2][0]= "A3";
@@ -95,15 +92,40 @@ public class Main {
             gameBoard [3][4]= "E4";
             gameBoard [4][4]= "E5";
 
+
             //screen output for player
             System.out.println(""); //blank line
-            System.out.println("** Battleship Limited **");
-            System.out.println("Here's your game board:");
-            System.out.println("----------------");
+            System.out.println("Ships are placed...");
+            System.out.println("");
+            System.out.println("And here's your game board:");
+            System.out.println("----------------------");
             printGameBoard(); //calls method "printGameBoard" to print game board for user on screen
-            System.out.println("Select the coordinates of where a ship might be:");
-            //String userGuess = sc.nextLine();
+            System.out.println("----------------------");
 
+            //deal with userguesses: track/collect guesses, compare to previous guesses, provide feedback/results on guess
+            System.out.println("Select the coordinates of where a ship might be (A1, C2, E5, etc.):");
+            String userGuess = sc.nextLine();
+            System.out.println("You entered: " + userGuess + ".");
+            String guessResult;
+            // check to make sure guess is valid for the game board
+                //if guess is not valid, ask for new guess
+                //if guess is valid, proceed
+
+
+
+
+        // check if guess matches current list of guesses
+                // if guess matches, ask for new guess
+                //if guess does not match the list
+                    //add to list
+                    //check guess against ship locations
+                        //if guess matches ship locations
+                            //get position of matched ship location and remove from list
+                            //update gameBoard array position with H or M
+                            //provide feedback to player
+                            //
+
+            System.out.println("...and it's a <HIT> or <MISS>" /*+ guessResult*/);
             //code to Play Again or quit decision
             //System.out.println("Would you like to play again?");
             //playGame = sc.nextLine();
@@ -118,8 +140,9 @@ public class Main {
     public static void printGameBoard() {
         for (int y = 0; y < boardHeight; y++) { /*Exterior loop*/
             for (int x = 0; x < boardWidth; x++) { /*Interior loop*/
-                System.out.print(gameBoard[x][y] + " ");
+                System.out.print(gameBoard[x][y] + "   ");
             }
+            System.out.println("");
             System.out.println("");
         }
     }
